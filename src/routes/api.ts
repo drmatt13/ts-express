@@ -1,11 +1,11 @@
 import express from "express";
 
 // controllers
-import { getData, postToDB } from "../controllers/api";
+import { getHandler, postHandler } from "../controllers/api";
 
+// create an express router
 const router = express.Router();
 
-router.get("/", getData);
-router.post("/", postToDB);
+router.get("/", getHandler).post("/", postHandler);
 
 export default router;

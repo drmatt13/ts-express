@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head'); %>
+  <title>Homepage</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- partial -->
+  <%- include('../../partials/header'); %>
+  <!-- partial -->
+  <div>
+    <h1>Homepage</h1>
+    <p>Welcome to the homepage!</p>
+    <!-- generate template from data passed in through controller -->
+    <% if (linksArray.length) { %>
+      <div>
+        <% linksArray.forEach((item) => { %>
+          <div>
+            <div><%= item.favicon %></div>
+            <div><%= item.href %></div>
+            <div><%= item.name %></div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+    <!-- generate template from data passed in through controller -->
+  </div>
+  <!-- partial -->
+  <%- include('../../partials/footer'); %>
+  <!-- partial -->
+</body>
+<script src="script.js" defer></script>
+</html>

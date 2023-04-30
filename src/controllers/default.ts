@@ -1,9 +1,12 @@
-// create a default controller for the default route
 import { Request, Response } from "express";
 
+// data
+import linksArray from "../data/links";
+
 // GET "/"
-// send static html file
-// src/html/homepage/index.html
-export const getController = (req: Request, res: Response) => {
-  res.sendFile("src/html/homepage/index.html", { root: "./" });
+// send ejs template as a response from the views/pages/homepage/index.ejs file
+// pass in the linksArray data to the ejs template
+export const getHandler = (req: Request, res: Response) => {
+  res.render("pages/homepage/index", { linksArray });
+  // res.json({ message: "Hello World!", path: path.join(__dirname) });
 };

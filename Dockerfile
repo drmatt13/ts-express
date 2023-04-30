@@ -13,11 +13,11 @@ RUN npm install
 # Copy source files
 COPY . .
 
-# Compile TypeScript to JavaScript
+# Compile TypeScript to JavaScript and copy assets to dist folder
 RUN npm run build
 
 # Expose the application's port
-EXPOSE 3000
+EXPOSE 80
 
 # Start the application in production mode
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "production"]

@@ -1,20 +1,37 @@
-// create getData, postToDB functions in src\controllers\api.ts:
 import { Request, Response } from "express";
+import fs from "fs";
+import path from "path";
+import sharp from "sharp";
 
-// GET "/api"
-// send json data
-export const getData = (req: Request, res: Response) => {
+// const nodeEnv = process.env.NODE_ENV || "development";
+// const basePath = path.join(
+//   __dirname,
+//   nodeEnv === "production" ? "../images" : "../../src/images"
+// );
+
+// const srcImagesPath = path.join(basePath, "src");
+// const thumbnailsPath = path.join(basePath, "thumbnails");
+// const images = fs.readdirSync(srcImagesPath);
+
+export const getHandler = (req: Request, res: Response) => {
+  // for (let i = 0; i < images.length; i++) {
+  //   sharp(path.join(srcImagesPath, images[i]))
+  //     .jpeg({ quality: 80 })
+  //     .resize({ width: 250, height: 250, fit: "cover", position: "center" })
+  //     .toFile(path.join(thumbnailsPath, `${images[i].split(".")[0]}.jpg`));
+  //   console.log(`Image ${i + 1} of ${images.length} processed`);
+  // }
   res.status(200).json({
-    message: "Hello world!",
+    message: "Thumbnails successfully generated!",
     success: true,
   });
 };
 
 // POST "/api"
-// update database
-export const postToDB = (req: Request, res: Response) => {
+// update dummy database
+export const postHandler = (req: Request, res: Response) => {
   res.status(200).json({
-    message: "Database updated successfully!",
+    message: "Dummy database updated successfully!",
     success: true,
   });
 };
