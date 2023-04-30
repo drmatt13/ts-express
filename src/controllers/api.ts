@@ -3,24 +3,26 @@ import fs from "fs";
 import path from "path";
 import sharp from "sharp";
 
-// const nodeEnv = process.env.NODE_ENV || "development";
-// const basePath = path.join(
-//   __dirname,
-//   nodeEnv === "production" ? "../images" : "../../src/images"
-// );
+// get directory paths
+const imagesPath = path.join(__dirname, "..", "images");
 
-// const srcImagesPath = path.join(basePath, "src");
-// const thumbnailsPath = path.join(basePath, "thumbnails");
-// const images = fs.readdirSync(srcImagesPath);
+// get images from src/images
+const images = fs.readdirSync(`${imagesPath}/src`);
 
 export const getHandler = (req: Request, res: Response) => {
-  // for (let i = 0; i < images.length; i++) {
-  //   sharp(path.join(srcImagesPath, images[i]))
-  //     .jpeg({ quality: 80 })
-  //     .resize({ width: 250, height: 250, fit: "cover", position: "center" })
-  //     .toFile(path.join(thumbnailsPath, `${images[i].split(".")[0]}.jpg`));
-  //   console.log(`Image ${i + 1} of ${images.length} processed`);
-  // }
+  // create thumbnails directory if it doesn't exist
+  if (!fs.existsSync(`${imagesPath}/thumbnails`)) {
+    fs.mkdirSync(`${imagesPath}/thumbnails`);
+  }
+  for (let i = 0; i < images.length; i++) {
+    sharp(path.join(`${imagesPath}/src`, images[i]))
+      .jpeg({ quality: 80 })
+      .resize({ width: 250, height: 250, fit: "cover", position: "center" })
+      .toFile(
+        path.join(`${imagesPath}/thumbnails`, `${images[i].split(".")[0]}.jpg`)
+      );
+    console.log(`Image ${i + 1} of ${images.length} processed`);
+  }
   res.status(200).json({
     message: "Thumbnails successfully generated!",
     success: true,
