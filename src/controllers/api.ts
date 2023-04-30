@@ -9,8 +9,10 @@ const imagesPath = path.join(__dirname, "..", "images");
 // get images from src/images
 const images = fs.readdirSync(`${imagesPath}/src`);
 
+// GET "/api"
+// generate thumbnails
+// return { message, success }
 export const getHandler = (req: Request, res: Response) => {
-  // create thumbnails directory if it doesn't exist
   if (!fs.existsSync(`${imagesPath}/thumbnails`)) {
     fs.mkdirSync(`${imagesPath}/thumbnails`);
   }
@@ -31,6 +33,7 @@ export const getHandler = (req: Request, res: Response) => {
 
 // POST "/api"
 // update dummy database
+// return { message, success }
 export const postHandler = (req: Request, res: Response) => {
   res.status(200).json({
     message: "Dummy database updated successfully!",
