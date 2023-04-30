@@ -13,7 +13,7 @@ const port =
 // // use res.render from within an express controller to load up an ejs view file
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // configure express app to use express.json middleware
 // this will allow you to parse the json data and url encoded data in requests
