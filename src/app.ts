@@ -19,10 +19,11 @@ dotenv.config();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// app.use is used to add middleware to the express stack in the order they are added
+
 // set the public folder to serve public assets
 app.use(express.static(path.join(__dirname, "public")));
 
-// configure express app to use express.json middleware
 // this will allow you to parse the json data and url encoded data in requests
 app.use(express.json());
 
