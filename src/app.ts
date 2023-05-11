@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 import path from "path";
 
@@ -18,6 +19,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // configure express app to use express.json middleware
 // this will allow you to parse the json data and url encoded data in requests
 app.use(express.json());
+
+// cookie parser
+app.use(cookieParser());
 
 // // routes
 app.use("/", defaultRouter);
